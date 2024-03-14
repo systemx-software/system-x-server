@@ -1,0 +1,3 @@
+[submodule "extlibs/boost"]
+	path = extlibs/boost
+	url = https://github.com/boostorg/boost
