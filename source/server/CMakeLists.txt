@@ -1,1 +1,0 @@
-target_sources(sysx-server PRIVATE Server.cpp)

@@ -1,11 +1,9 @@
 #include <iostream>
 #include <boost/asio.hpp>
 
-#include <boost/regex.h>
 int main() 
 {
-    boost::regex xRegEx("(\\w+)-(\\d+)-(\\w+)-(\\d+)");
-
-    std::cout << "Hello, World!" << std::endl;
+    boost::asio::io_service io_service;
+    
     return 0;
 }
