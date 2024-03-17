@@ -4,19 +4,31 @@
 
 namespace systemx::data_base::api
 {
-    std::string User::GetName()
+    std::optional<std::string> User::GetName() const
     {
         auto& pDataBase = DataBase::GetInstance();
 
-        return pDataBase.QueryUnique(std::format("SELECT `name` FROM `users` WHERE `id` = {}", m_id))[0][0];
+        const auto data = pDataBase.QueryShared(std::format("SELECT `name` FROM `users` WHERE `id` = {}", m_id));
+        
+        if (data.empty())
+            return std::nullopt;
+
+        return data[0][0];
     }
 
-    std::string User::GetStatus() const
+    std::optional<std::string> User::GetStatus() const
     {
-        return std::string();
+        auto& pDataBase = DataBase::GetInstance();
+
+        const auto data = pDataBase.QueryShared(std::format("SELECT `status` FROM `users` WHERE `id` = {}", m_id));
+
+        if (data.empty())
+            return std::nullopt;
+
+        return data[0][0];
     }
 
-    std::string User::GetEmail() const
+    std::optional<std::string> User::GetEmail() const
     {
         return std::string();
     }

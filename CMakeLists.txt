@@ -27,7 +27,9 @@ endif()
 project(sysx-server)
 add_executable(sysx-server source/main.cpp)
 target_include_directories(sysx-server PRIVATE source)
+
 add_subdirectory(source)
+add_subdirectory(tests)
 
 find_package(Boost)
 target_link_libraries(sysx-server PRIVATE ${Boost_LIBRARIES})

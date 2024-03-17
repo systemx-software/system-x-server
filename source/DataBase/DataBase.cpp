@@ -29,8 +29,8 @@ namespace systemx::data_base
 
     std::vector<std::vector<std::string>> DataBase::QueryShared(const std::string &str)
     {
-        std::unique_lock lock(m_pMutex);
-        return QueryShared(str);
+        std::shared_lock lock(m_pMutex);
+        return Query(str);
     }
 
     std::vector<std::vector<std::string>> DataBase::Query(const std::string &str)

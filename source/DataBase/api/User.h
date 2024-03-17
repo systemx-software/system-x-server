@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <string>
-
+#include <optional>
 
 namespace systemx::data_base::api
 {
@@ -10,9 +10,9 @@ namespace systemx::data_base::api
     public:
         User(uint64_t id) : m_id(id) {};
 
-        [[nodiscard]] std::string GetName();
-        [[nodiscard]] std::string GetStatus() const;
-        [[nodiscard]] std::string GetEmail() const;
+        [[nodiscard]] std::optional<std::string> GetName() const;
+        [[nodiscard]] std::optional<std::string> GetStatus() const;
+        [[nodiscard]] std::optional<std::string> GetEmail() const;
 
     private:
         uint64_t m_id;
