@@ -1,9 +1,10 @@
 #include <iostream>
 #include <boost/asio.hpp>
+#include "DataBase/DataBase.h"
+
 
 int main() 
 {
-    boost::asio::io_service io_service;
-    
+    systemx::data_base::DataBase::GetInstance();
     return 0;
 }

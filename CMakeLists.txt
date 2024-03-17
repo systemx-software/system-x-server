@@ -5,13 +5,20 @@ set(CMAKE_SHARED_MODULE_PREFIX "")
 
 include("cmake/SetupVcpkg.cmake")
 
-vcpgk_install_not_found(sqlite3, unofficial-sqlite3)
-vcpgk_install_not_found(boost-beast, Boost)
+vcpgk_install_not_found(sqlite3 unofficial-sqlite3)
+vcpgk_install_not_found(boost-beast Boost)
 
 
 if(WIN32)
     set(CMAKE_CXX_COMPILER cl.exe)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/out")
+
+    if (CMAKE_BUILD_TYPE MATCHES Debug)
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+    else()
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+    endif()
+
 elseif(UNIX)
     set(CMAKE_CXX_COMPILER g++)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/out/${CMAKE_BUILD_TYPE}")
