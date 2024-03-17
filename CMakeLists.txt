@@ -15,8 +15,16 @@ endif()
 
 project(sysx-server)
 
+find_package(Boost 1.83 REQUIRED COMPONENTS system)
+
 
 add_executable(sysx-server source/main.cpp)
-add_subdirectory(extlibs)
 
-target_link_libraries(sysx-server PRIVATE boost_asio)
+target_link_directories(sysx-server PRIVATE source)
+
+add_subdirectory(source)
+
+
+message(STATUS "Boost libs: $ENV{OPENSSL_ROOT_DIR}")
+
+target_link_libraries(sysx-server PRIVATE Boost::system)
